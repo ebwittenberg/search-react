@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      users: [],
+      searchText: ''
     }
   }
 
@@ -28,8 +29,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
+          <input 
+            placeholder="Search users"
+            style={{width: '200px'}}
+            onChange={(e) => this.setState({ searchText: e.target.value })}
+          />
           {
-            this.state.users ? <User users={this.state.users}/> : null
+            this.state.users ? <User users={ this.state.users }/> : null
           }
         </header>
       </div>
