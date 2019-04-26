@@ -32,14 +32,24 @@ class App extends React.Component {
           <input 
             placeholder="Search users"
             style={{width: '200px'}}
-            onChange={(e) => this.setState({ searchText: e.target.value })}
+            onChange={(e) => this._handleChange(e.target.value)}
           />
           {
-            this.state.users ? <User users={ this.state.users }/> : null
+            this.state.users ? <User users={ this.state.users } searchText={ this.state.searchText }/> : null
           }
         </header>
       </div>
     );
+  }
+
+  _handleChange = (searchText) => {
+    // 1. update searchText state with typed in value
+    console.log(searchText);
+    this.setState({
+      searchText
+    })
+    // 2. filter users state to include names that start with search text
+
   }
 }
 
